@@ -39,7 +39,30 @@
                   <a class="btn btn-secondary btn-sm" href="{{ route('posts.edit',$post->id) }}"><i class="bi bi-pencil-square"></i> Edit</a>
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this post?');"><i class="bi bi-trash"></i> Delete</button>
+                  <button type="button" class="btn btn-danger btn-sm delete-post" data-id="{{ $post->id }}" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $post->id }}">
+                    <i class="bi bi-trash"></i> Delete
+                  </button>
+                  <div class="modal fade" id="deleteModal{{ $post->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $post->id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="deleteModalLabel{{ $post->id }}">Confirm Delete</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          Are you sure you want to delete this post? This action cannot be undone.
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          <form action="{{ route('posts.destroy',$post->id) }}" method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </form>
               </td>
             </tr>
