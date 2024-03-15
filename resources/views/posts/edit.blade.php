@@ -2,12 +2,6 @@
 @section('title', 'Edit Post')
 @section('content')
 
-@if ($message = Session::get('success'))
-  <div class="alert alert-success" role="alert">
-    {{ $message }}
-  </div>
-@endif
-
 <div class="row justify-content-center mt-3">
   <div class="col-md-8">
 

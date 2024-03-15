@@ -4,20 +4,26 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class StorePostRequest
+ * @package App\Http\Requests
+ */
 class StorePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
+     *
+     * @return bool
      */
     public function authorize(): bool
     {
-        return true; // Assuming you have appropriate authorization logic in place
+        return true; 
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array
      */
     public function rules(): array
     {
@@ -25,7 +31,7 @@ class StorePostRequest extends FormRequest
             'title' => 'required|string|max:255',
             'body' => 'required|string',
             'published_date' => 'nullable|date',
-            'status' => 'required|in:published,unpublished', // Assuming status is an enum
+            'status' => 'required|in:published,unpublished', 
         ];
     }
 }
