@@ -12,10 +12,10 @@
   <div class="col-md-12">
 
     <div class="card">
-      <div class="card-header">Post List</div>
+      <div class="card-header">Posts List</div>
       <div class="card-body">
         <a href="{{ route('posts.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New Post</a>
-        <table class="table table-striped table-bordered">
+        <table id="postTable" class="table table-striped table-bordered">
           <thead>
             <tr>
               <th scope="col">S#</th>
@@ -53,5 +53,12 @@
     </div>
   </div>
 </div>
-
+<script>
+  $(document).ready(function() {
+    $('#postTable').DataTable({
+      paging: false,
+      info: false
+    });
+  });
+</script>
 @endsection
